@@ -1,32 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.4 on win32)" generated="20230827 11:53:59.500" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.10.4 on win32)" generated="20230827 18:11:27.903" rpa="false" schemaversion="3">
 <suite id="s1" name="Signup" source="C:\qax\projects\mark85_robot_express\tests\signup.robot">
 <test id="s1-t1" name="Deve poder cadastrar um novo usuario" line="8">
-<kw name="Set Variable" library="BuiltIn">
-<var>${password}</var>
-<arg>pwd123</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230827 11:54:01.870" level="INFO">${password} = pwd123</msg>
-<status status="PASS" starttime="20230827 11:54:01.870" endtime="20230827 11:54:01.870"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${name}</var>
-<arg>Fernando Papito</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230827 11:54:01.871" level="INFO">${name} = Fernando Papito</msg>
-<status status="PASS" starttime="20230827 11:54:01.871" endtime="20230827 11:54:01.871"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${email}</var>
-<arg>papito@hotmail.com</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230827 11:54:01.872" level="INFO">${email} = papito@hotmail.com</msg>
-<status status="PASS" starttime="20230827 11:54:01.871" endtime="20230827 11:54:01.872"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${user}</var>
+<arg>password=pwd123</arg>
+<arg>name=Fernando Papito</arg>
+<arg>email=papito@hotmail.com</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230827 18:11:29.927" level="INFO">${user} = {'password': 'pwd123', 'name': 'Fernando Papito', 'email': 'papito@hotmail.com'}</msg>
+<status status="PASS" starttime="20230827 18:11:29.926" endtime="20230827 18:11:29.927"/>
 </kw>
 <kw name="Remove user from database" library="database">
-<arg>${email}</arg>
-<msg timestamp="20230827 11:54:04.109" level="INFO">removing user bypapito@hotmail.com</msg>
-<status status="PASS" starttime="20230827 11:54:01.872" endtime="20230827 11:54:04.109"/>
+<arg>${user}[email]</arg>
+<msg timestamp="20230827 18:11:31.179" level="INFO">removing user bypapito@hotmail.com</msg>
+<status status="PASS" starttime="20230827 18:11:29.927" endtime="20230827 18:11:31.179"/>
 </kw>
 <kw name="Start Session" library="base">
 <kw name="New Browser" library="Browser">
@@ -35,28 +23,28 @@
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Create a new playwright Browser with specified options.</doc>
-<msg timestamp="20230827 11:54:04.111" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\qax\\projects\\mark85_robot_express\\tests\\results\\browser\\traces\\65ae02e8-2ee7-4501-8a60-c306d71a2562"}</msg>
-<msg timestamp="20230827 11:54:04.544" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\qax\\projects\\mark85_robot_express\\tests\\results\\browser\\traces\\65ae02e8-2ee7-4501-8a60-c306d71a2562"}</msg>
-<status status="PASS" starttime="20230827 11:54:04.110" endtime="20230827 11:54:04.544"/>
+<msg timestamp="20230827 18:11:31.182" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\qax\\projects\\mark85_robot_express\\tests\\results\\browser\\traces\\b117d7d2-f940-4c24-a942-9e1dd14c92d7"}</msg>
+<msg timestamp="20230827 18:11:31.702" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\qax\\projects\\mark85_robot_express\\tests\\results\\browser\\traces\\b117d7d2-f940-4c24-a942-9e1dd14c92d7"}</msg>
+<status status="PASS" starttime="20230827 18:11:31.181" endtime="20230827 18:11:31.703"/>
 </kw>
 <kw name="New Page" library="Browser">
 <arg>http://localhost:3000</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<msg timestamp="20230827 11:54:05.763" level="INFO">Successfully initialized new page object and opened url: http://localhost:3000</msg>
-<msg timestamp="20230827 11:54:05.763" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
-<status status="PASS" starttime="20230827 11:54:04.545" endtime="20230827 11:54:05.763"/>
+<msg timestamp="20230827 18:11:32.916" level="INFO">Successfully initialized new page object and opened url: http://localhost:3000</msg>
+<msg timestamp="20230827 18:11:32.916" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<status status="PASS" starttime="20230827 18:11:31.703" endtime="20230827 18:11:32.916"/>
 </kw>
-<status status="PASS" starttime="20230827 11:54:04.110" endtime="20230827 11:54:05.763"/>
+<status status="PASS" starttime="20230827 18:11:31.180" endtime="20230827 18:11:32.916"/>
 </kw>
 <kw name="Go To" library="Browser">
 <arg>http://localhost:3000/signup</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Navigates to the given ``url``.</doc>
-<msg timestamp="20230827 11:54:05.881" level="INFO">Successfully opened URL http://localhost:3000/signup</msg>
-<status status="PASS" starttime="20230827 11:54:05.764" endtime="20230827 11:54:05.882"/>
+<msg timestamp="20230827 18:11:33.008" level="INFO">Successfully opened URL http://localhost:3000/signup</msg>
+<status status="PASS" starttime="20230827 18:11:32.917" endtime="20230827 18:11:33.009"/>
 </kw>
 <kw name="Wait For Elements State" library="Browser">
 <arg>css=h1</arg>
@@ -65,8 +53,8 @@
 <tag>PageContent</tag>
 <tag>Wait</tag>
 <doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
-<msg timestamp="20230827 11:54:05.930" level="INFO">Waited for Element with selector css=h1 at state visible</msg>
-<status status="PASS" starttime="20230827 11:54:05.884" endtime="20230827 11:54:05.931"/>
+<msg timestamp="20230827 18:11:33.054" level="INFO">Waited for Element with selector css=h1 at state visible</msg>
+<status status="PASS" starttime="20230827 18:11:33.011" endtime="20230827 18:11:33.054"/>
 </kw>
 <kw name="Get Text" library="Browser">
 <arg>css=h1</arg>
@@ -76,42 +64,42 @@
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<msg timestamp="20230827 11:54:05.975" level="INFO">Text: 'Faça seu cadastro'</msg>
-<status status="PASS" starttime="20230827 11:54:05.931" endtime="20230827 11:54:05.975"/>
+<msg timestamp="20230827 18:11:33.092" level="INFO">Text: 'Faça seu cadastro'</msg>
+<status status="PASS" starttime="20230827 18:11:33.054" endtime="20230827 18:11:33.092"/>
 </kw>
 <kw name="Fill Text" library="Browser">
 <arg>id=name</arg>
-<arg>${name}</arg>
+<arg>${user}[name]</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<msg timestamp="20230827 11:54:05.977" level="INFO">Fills the text 'Fernando Papito' in the given field.</msg>
-<status status="PASS" starttime="20230827 11:54:05.976" endtime="20230827 11:54:06.022"/>
+<msg timestamp="20230827 18:11:33.093" level="INFO">Fills the text 'Fernando Papito' in the given field.</msg>
+<status status="PASS" starttime="20230827 18:11:33.093" endtime="20230827 18:11:33.133"/>
 </kw>
 <kw name="Fill Text" library="Browser">
 <arg>id=email</arg>
-<arg>${email}</arg>
+<arg>${user}[email]</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<msg timestamp="20230827 11:54:06.023" level="INFO">Fills the text 'papito@hotmail.com' in the given field.</msg>
-<status status="PASS" starttime="20230827 11:54:06.022" endtime="20230827 11:54:06.061"/>
+<msg timestamp="20230827 18:11:33.134" level="INFO">Fills the text 'papito@hotmail.com' in the given field.</msg>
+<status status="PASS" starttime="20230827 18:11:33.134" endtime="20230827 18:11:33.169"/>
 </kw>
 <kw name="Fill Text" library="Browser">
 <arg>id=password</arg>
-<arg>${password}</arg>
+<arg>${user}[password]</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<msg timestamp="20230827 11:54:06.062" level="INFO">Fills the text 'pwd123' in the given field.</msg>
-<status status="PASS" starttime="20230827 11:54:06.062" endtime="20230827 11:54:06.091"/>
+<msg timestamp="20230827 18:11:33.170" level="INFO">Fills the text 'pwd123' in the given field.</msg>
+<status status="PASS" starttime="20230827 18:11:33.169" endtime="20230827 18:11:33.197"/>
 </kw>
 <kw name="Click" library="Browser">
 <arg>id=buttonSignup</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" starttime="20230827 11:54:06.091" endtime="20230827 11:54:06.165"/>
+<status status="PASS" starttime="20230827 18:11:33.198" endtime="20230827 18:11:33.266"/>
 </kw>
 <kw name="Wait For Elements State" library="Browser">
 <arg>css=.notice p</arg>
@@ -120,8 +108,8 @@
 <tag>PageContent</tag>
 <tag>Wait</tag>
 <doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
-<msg timestamp="20230827 11:54:06.971" level="INFO">Waited for Element with selector css=.notice p at state visible</msg>
-<status status="PASS" starttime="20230827 11:54:06.166" endtime="20230827 11:54:06.972"/>
+<msg timestamp="20230827 18:11:34.071" level="INFO">Waited for Element with selector css=.notice p at state visible</msg>
+<status status="PASS" starttime="20230827 18:11:33.266" endtime="20230827 18:11:34.071"/>
 </kw>
 <kw name="Get Text" library="Browser">
 <arg>css=.notice p</arg>
@@ -131,44 +119,30 @@
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<msg timestamp="20230827 11:54:06.997" level="INFO">Text: 'Boas vindas ao Mark85, o seu gerenciador de tarefas.'</msg>
-<status status="PASS" starttime="20230827 11:54:06.972" endtime="20230827 11:54:06.997"/>
+<msg timestamp="20230827 18:11:34.097" level="INFO">Text: 'Boas vindas ao Mark85, o seu gerenciador de tarefas.'</msg>
+<status status="PASS" starttime="20230827 18:11:34.072" endtime="20230827 18:11:34.097"/>
 </kw>
-<status status="PASS" starttime="20230827 11:54:01.865" endtime="20230827 11:54:06.998"/>
+<status status="PASS" starttime="20230827 18:11:29.922" endtime="20230827 18:11:34.098"/>
 </test>
-<test id="s1-t2" name="Nao deve permitir cadastros duplicado" line="34">
-<kw name="Set Variable" library="BuiltIn">
-<var>${password}</var>
-<arg>pwd123</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230827 11:54:07.101" level="INFO">${password} = pwd123</msg>
-<status status="PASS" starttime="20230827 11:54:07.100" endtime="20230827 11:54:07.101"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${name}</var>
-<arg>Fernando Papito</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230827 11:54:07.102" level="INFO">${name} = Fernando Papito</msg>
-<status status="PASS" starttime="20230827 11:54:07.102" endtime="20230827 11:54:07.102"/>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<var>${email}</var>
-<arg>papito@hotmail.com</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20230827 11:54:07.103" level="INFO">${email} = papito@hotmail.com</msg>
-<status status="PASS" starttime="20230827 11:54:07.102" endtime="20230827 11:54:07.103"/>
+<test id="s1-t2" name="Nao deve permitir cadastros duplicado" line="43">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${user}</var>
+<arg>password=pwd123</arg>
+<arg>name=Fernando Papito</arg>
+<arg>email=papito@hotmail.com</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230827 18:11:34.230" level="INFO">${user} = {'password': 'pwd123', 'name': 'Fernando Papito', 'email': 'papito@hotmail.com'}</msg>
+<status status="PASS" starttime="20230827 18:11:34.228" endtime="20230827 18:11:34.230"/>
 </kw>
 <kw name="Remove user from database" library="database">
-<arg>${email}</arg>
-<msg timestamp="20230827 11:54:07.315" level="INFO">removing user bypapito@hotmail.com</msg>
-<status status="PASS" starttime="20230827 11:54:07.104" endtime="20230827 11:54:07.315"/>
+<arg>${user}[email]</arg>
+<msg timestamp="20230827 18:11:34.433" level="INFO">removing user bypapito@hotmail.com</msg>
+<status status="PASS" starttime="20230827 18:11:34.231" endtime="20230827 18:11:34.434"/>
 </kw>
 <kw name="Insert user from database" library="database">
-<arg>${name}</arg>
-<arg>${email}</arg>
-<arg>${password}</arg>
-<msg timestamp="20230827 11:54:07.540" level="INFO">{'name': 'Fernando Papito', 'email': 'papito@hotmail.com', 'password': 'pwd123', '_id': ObjectId('64eb719f706df89e5c9baf3a')}</msg>
-<status status="PASS" starttime="20230827 11:54:07.316" endtime="20230827 11:54:07.540"/>
+<arg>${user}</arg>
+<msg timestamp="20230827 18:11:34.638" level="INFO">{'password': 'pwd123', 'name': 'Fernando Papito', 'email': 'papito@hotmail.com', '_id': ObjectId('64ebca165ce6c59029121cd0')}</msg>
+<status status="PASS" starttime="20230827 18:11:34.435" endtime="20230827 18:11:34.638"/>
 </kw>
 <kw name="Start Session" library="base">
 <kw name="New Browser" library="Browser">
@@ -177,29 +151,29 @@
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Create a new playwright Browser with specified options.</doc>
-<msg timestamp="20230827 11:54:07.542" level="INFO">Switching browser to browser=e65bef94-ecd5-4e04-a2f2-466c78eaf400</msg>
-<msg timestamp="20230827 11:54:07.545" level="INFO">Successfully changed active browser</msg>
-<msg timestamp="20230827 11:54:07.545" level="INFO">Reusing existing browser with id: browser=e65bef94-ecd5-4e04-a2f2-466c78eaf400</msg>
-<status status="PASS" starttime="20230827 11:54:07.542" endtime="20230827 11:54:07.545"/>
+<msg timestamp="20230827 18:11:34.640" level="INFO">Switching browser to browser=6035a6ee-5dcb-4648-9ced-e2d9d8f1823b</msg>
+<msg timestamp="20230827 18:11:34.643" level="INFO">Successfully changed active browser</msg>
+<msg timestamp="20230827 18:11:34.643" level="INFO">Reusing existing browser with id: browser=6035a6ee-5dcb-4648-9ced-e2d9d8f1823b</msg>
+<status status="PASS" starttime="20230827 18:11:34.640" endtime="20230827 18:11:34.643"/>
 </kw>
 <kw name="New Page" library="Browser">
 <arg>http://localhost:3000</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Open a new Page.</doc>
-<msg timestamp="20230827 11:54:08.693" level="INFO">Successfully initialized new page object and opened url: http://localhost:3000</msg>
-<msg timestamp="20230827 11:54:08.694" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
-<status status="PASS" starttime="20230827 11:54:07.545" endtime="20230827 11:54:08.694"/>
+<msg timestamp="20230827 18:11:35.807" level="INFO">Successfully initialized new page object and opened url: http://localhost:3000</msg>
+<msg timestamp="20230827 18:11:35.807" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<status status="PASS" starttime="20230827 18:11:34.644" endtime="20230827 18:11:35.807"/>
 </kw>
-<status status="PASS" starttime="20230827 11:54:07.541" endtime="20230827 11:54:08.694"/>
+<status status="PASS" starttime="20230827 18:11:34.639" endtime="20230827 18:11:35.807"/>
 </kw>
 <kw name="Go To" library="Browser">
 <arg>http://localhost:3000/signup</arg>
 <tag>BrowserControl</tag>
 <tag>Setter</tag>
 <doc>Navigates to the given ``url``.</doc>
-<msg timestamp="20230827 11:54:08.803" level="INFO">Successfully opened URL http://localhost:3000/signup</msg>
-<status status="PASS" starttime="20230827 11:54:08.695" endtime="20230827 11:54:08.803"/>
+<msg timestamp="20230827 18:11:35.917" level="INFO">Successfully opened URL http://localhost:3000/signup</msg>
+<status status="PASS" starttime="20230827 18:11:35.808" endtime="20230827 18:11:35.917"/>
 </kw>
 <kw name="Wait For Elements State" library="Browser">
 <arg>css=h1</arg>
@@ -208,8 +182,8 @@
 <tag>PageContent</tag>
 <tag>Wait</tag>
 <doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
-<msg timestamp="20230827 11:54:08.841" level="INFO">Waited for Element with selector css=h1 at state visible</msg>
-<status status="PASS" starttime="20230827 11:54:08.804" endtime="20230827 11:54:08.841"/>
+<msg timestamp="20230827 18:11:35.957" level="INFO">Waited for Element with selector css=h1 at state visible</msg>
+<status status="PASS" starttime="20230827 18:11:35.918" endtime="20230827 18:11:35.957"/>
 </kw>
 <kw name="Get Text" library="Browser">
 <arg>css=h1</arg>
@@ -219,42 +193,42 @@
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<msg timestamp="20230827 11:54:08.874" level="INFO">Text: 'Faça seu cadastro'</msg>
-<status status="PASS" starttime="20230827 11:54:08.841" endtime="20230827 11:54:08.874"/>
+<msg timestamp="20230827 18:11:35.994" level="INFO">Text: 'Faça seu cadastro'</msg>
+<status status="PASS" starttime="20230827 18:11:35.958" endtime="20230827 18:11:35.994"/>
 </kw>
 <kw name="Fill Text" library="Browser">
 <arg>id=name</arg>
-<arg>${name}</arg>
+<arg>${user}[name]</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<msg timestamp="20230827 11:54:08.876" level="INFO">Fills the text 'Fernando Papito' in the given field.</msg>
-<status status="PASS" starttime="20230827 11:54:08.875" endtime="20230827 11:54:08.915"/>
+<msg timestamp="20230827 18:11:35.995" level="INFO">Fills the text 'Fernando Papito' in the given field.</msg>
+<status status="PASS" starttime="20230827 18:11:35.995" endtime="20230827 18:11:36.046"/>
 </kw>
 <kw name="Fill Text" library="Browser">
 <arg>id=email</arg>
-<arg>${email}</arg>
+<arg>${user}[email]</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<msg timestamp="20230827 11:54:08.917" level="INFO">Fills the text 'papito@hotmail.com' in the given field.</msg>
-<status status="PASS" starttime="20230827 11:54:08.916" endtime="20230827 11:54:08.951"/>
+<msg timestamp="20230827 18:11:36.048" level="INFO">Fills the text 'papito@hotmail.com' in the given field.</msg>
+<status status="PASS" starttime="20230827 18:11:36.048" endtime="20230827 18:11:36.088"/>
 </kw>
 <kw name="Fill Text" library="Browser">
 <arg>id=password</arg>
-<arg>${password}</arg>
+<arg>${user}[password]</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
-<msg timestamp="20230827 11:54:08.952" level="INFO">Fills the text 'pwd123' in the given field.</msg>
-<status status="PASS" starttime="20230827 11:54:08.951" endtime="20230827 11:54:08.981"/>
+<msg timestamp="20230827 18:11:36.091" level="INFO">Fills the text 'pwd123' in the given field.</msg>
+<status status="PASS" starttime="20230827 18:11:36.090" endtime="20230827 18:11:36.123"/>
 </kw>
 <kw name="Click" library="Browser">
 <arg>id=buttonSignup</arg>
 <tag>PageContent</tag>
 <tag>Setter</tag>
 <doc>Simulates mouse click on the element found by ``selector``.</doc>
-<status status="PASS" starttime="20230827 11:54:08.982" endtime="20230827 11:54:09.052"/>
+<status status="PASS" starttime="20230827 18:11:36.123" endtime="20230827 18:11:36.185"/>
 </kw>
 <kw name="Wait For Elements State" library="Browser">
 <arg>css=.notice p</arg>
@@ -263,8 +237,8 @@
 <tag>PageContent</tag>
 <tag>Wait</tag>
 <doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
-<msg timestamp="20230827 11:54:09.261" level="INFO">Waited for Element with selector css=.notice p at state visible</msg>
-<status status="PASS" starttime="20230827 11:54:09.053" endtime="20230827 11:54:09.262"/>
+<msg timestamp="20230827 18:11:36.494" level="INFO">Waited for Element with selector css=.notice p at state visible</msg>
+<status status="PASS" starttime="20230827 18:11:36.186" endtime="20230827 18:11:36.494"/>
 </kw>
 <kw name="Get Text" library="Browser">
 <arg>css=.notice p</arg>
@@ -274,19 +248,13 @@
 <tag>Getter</tag>
 <tag>PageContent</tag>
 <doc>Returns text attribute of the element found by ``selector``.</doc>
-<msg timestamp="20230827 11:54:09.289" level="INFO">Text: 'Oops! Já existe uma conta com o e-mail informado.'</msg>
-<status status="PASS" starttime="20230827 11:54:09.262" endtime="20230827 11:54:09.289"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>5</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20230827 11:54:14.291" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20230827 11:54:09.290" endtime="20230827 11:54:14.291"/>
+<msg timestamp="20230827 18:11:36.518" level="INFO">Text: 'Oops! Já existe uma conta com o e-mail informado.'</msg>
+<status status="PASS" starttime="20230827 18:11:36.494" endtime="20230827 18:11:36.518"/>
 </kw>
 <tag>dup</tag>
-<status status="PASS" starttime="20230827 11:54:07.094" endtime="20230827 11:54:14.291"/>
+<status status="PASS" starttime="20230827 18:11:34.220" endtime="20230827 18:11:36.519"/>
 </test>
-<status status="PASS" starttime="20230827 11:53:59.502" endtime="20230827 11:54:14.374"/>
+<status status="PASS" starttime="20230827 18:11:27.905" endtime="20230827 18:11:36.598"/>
 </suite>
 <statistics>
 <total>
