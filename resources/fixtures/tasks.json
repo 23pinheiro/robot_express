@@ -1,0 +1,13 @@
+{
+  "create": {
+      "user": {
+          "name": "Steve Jobs",
+          "email": "jobs@apple.com",
+          "password": "pwd123"
+      },
+       "tasks":  {
+          "name": "Criar uma nova versão do ipod",
+          "tasks":["ios","music" ,"ipod"]
+      }
+  }
+}

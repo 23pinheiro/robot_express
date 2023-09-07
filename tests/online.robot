@@ -1,7 +1,7 @@
 *** Settings ***
-Resource   ../resources/base.robot
+Resource   ../resources/base.resource
 
 *** Test Cases ***
 Webapp deve estar online
   Start Session
-  Get Title       equal   23Pinheiro by QAx
+  Get Title       equal       23Pinheiro by QAx

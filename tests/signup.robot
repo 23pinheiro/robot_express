@@ -1,12 +1,14 @@
 *** Settings ***
 Library   Browser
 Library   FakerLibrary
-Resource  ../resources/base.robot
+Resource  ../resources/base.resource
 
+Test Setup     Start Session
+Test Teardown  Take Screenshot
 
 *** Test Cases ***
 Deve poder cadastrar um novo usuario
-  #Os commentarios abaixo é para gerar name fakers.
+  #Os commentarios abaixo é para gerar nomes fakes.
   # ${name}        FakerLibrary.Name
   # ${email}       FakerLibrary.Free Email
 
@@ -15,30 +17,17 @@ Deve poder cadastrar um novo usuario
   # ${name}        Set Variable       Fernando Papito
   # ${email}       Set Variable       papito@hotmail.com
   
-  #a melhor forma pra melhor organizazação é criar dicionarios conforme abaixo 
+  #A melhor forma pra melhor organizazação é criar dicionarios conforme abaixo 
   ${user}    Create Dictionary      
-  ...        password=pwd123   
-  ...        name=Fernando Papito
-  ...        email=papito@hotmail.com
-
-
+  ...            password=pwd123   
+  ...            name=Fernando Papito
+  ...            email=papito@hotmail.com
   #Keyword gerada 
   Remove user from database        ${user}[email]
-  Start Session
-  Go to           http://localhost:3000/signup 
-  #checkpoint  
-  Wait For Elements State      css=h1     visible       5  
-  Get Text                     css=h1    equal        Faça seu cadastro
 
-  Fill Text      id=name           ${user}[name]     
-  Fill Text      id=email          ${user}[email]
-  Fill Text      id=password       ${user}[password]
-
-  Click          id=buttonSignup  
-  
-  Wait For Elements State      css=.notice p    visible       5  
-  Get Text                     css=.notice p      equal       Boas vindas ao Mark85, o seu gerenciador de tarefas.
-
+  Go to signup page       
+  Submit signup form                ${user}
+  Notice Should be                  Boas vindas ao Mark85, o seu gerenciador de tarefas.
 
 Nao deve permitir cadastros duplicado
   [Tags]            dup
@@ -61,21 +50,55 @@ Nao deve permitir cadastros duplicado
   #Nova forma passar os parametros
   Remove user from database        ${user}[email]
   Insert user from database        ${user}
+ 
+  Go to signup page      
+  Submit signup form        ${user}
+  Notice should be        Oops! Já existe uma conta com o e-mail informado.
+  #Sempre recomendado usar css selector    (abaixo esta antes do page object)
+  # Fill Text      css=input[name="name"]            ${user}[name]     
+  # Fill Text      css=input[name=email]             ${user}[email]
+  # Fill Text      css=input[name=password]           ${user}[password]
 
-  Start Session
-  Go to           http://localhost:3000/signup 
-  #checkpoint  
-  Wait For Elements State      css=h1     visible       5  
-  Get Text                     css=h1    equal        Faça seu cadastro
-
-  Fill Text      id=name           ${user}[name]     
-  Fill Text      id=email          ${user}[email]
-  Fill Text      id=password       ${user}[password]
-
-  Click          id=buttonSignup   
+  # Click          css=button[type=submit] >> text=Cadastrar  
   
-  Wait For Elements State      css=.notice p    visible       5  
-  Get Text                     css=.notice p      equal       Oops! Já existe uma conta com o e-mail informado.
-  # Sleep  5
+  # Wait For Elements State      css=.notice p    visible       5  
+  # Get Text                     css=.notice p      equal       Oops! Já existe uma conta com o e-mail informado.
+ 
 
+Campos obrigatorios 
+  ${user}        Create Dictionary
+  ...              name=${EMPTY}
+  ...              email=${EMPTY}
+  ...              password=${EMPTY}
+  Go to signup page    
+  Submit signup form      ${user} 
 
+  Alert should be           Informe seu nome completo
+  Alert should be          Informe seu e-email
+  Alert should be          Informe uma senha com pelo menos 6 digitos
+
+Não deve cadastrar um email incorreto 
+  [Tags]    inv_email
+  ${user}    Create Dictionary
+  ...        name=Charles Xaiver
+  ...        email=xavier.com.br
+  ...        password=123456 
+  
+  Go to signup page
+  Submit signup form     ${user} 
+  Alert Should be        Digite um e-mail válido
+# Exemplo de como testar com o
+Não deve cadastrar senha curta 
+  [Tags]            short_pass
+  @{password_list}   Create List  1    12     123     1234    12345
+  FOR    ${password}    IN    @{password_list}
+    ${user}        Create Dictionary
+    ...              name=Fernando Papito
+    ...              email=fernando.papito@msn.com.br
+    ...              password=${password}
+    Go to signup page    
+    Submit signup form          ${user} 
+    Alert should be          Informe uma senha com pelo menos 6 digito    
+    # Log To Console   ${password}
+      
+  END

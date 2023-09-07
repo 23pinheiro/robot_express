@@ -1,5 +1,8 @@
 from robot.api.deco   import keyword
-from pymongo import MongoClient
+from pymongo           import MongoClient
+import bcrypt
+
+
 #Abre a conexão
 client= MongoClient('mongodb+srv://qa:experience@cluster0.mxhmsmu.mongodb.net/?retryWrites=true&w=majority')
 #copiar a string de conexão. 
@@ -17,14 +20,13 @@ def remove_user(email):
 
 @keyword ('Insert user from database')
 def insert_user(user): 
-
-# def insert_user(name, email, password): 
-  # doc= {
-  #   'name': name,
-  #   'email': email,
-  #   'password': password,
-  # }
+  hash_pass=bcrypt.hashpw(user['password'].encode('utf-8'), bcrypt.gensalt(8))
+  doc=  { 
+  'name':user['name'],
+  'email':user['email'],
+  'password': hash_pass
+  }
   users=db['users']
-  users.insert_one(user)
+  users.insert_one(doc)
   print(user)
   
