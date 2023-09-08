@@ -5,7 +5,7 @@
           "email": "jobs@apple.com",
           "password": "pwd123"
       },
-       "tasks":  {
+       "tasks":{
           "name": "Criar uma nova versão do ipod",
           "tasks":["ios","music" ,"ipod"]
       }
