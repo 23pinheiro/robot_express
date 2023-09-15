@@ -7,7 +7,18 @@
       },
        "tasks":{
           "name": "Criar uma nova versão do ipod",
-          "tasks":["ios","music" ,"ipod"]
+          "tags":["ios","music" ,"ipod"]
       }
-  }
+  },
+  "duplicate": {
+        "user": {
+            "name": "Amanda Waller",
+            "email": "waller@chequemate.com",
+            "password": "pwd123"
+        },
+         "task":{
+            "name": "Recrutar novos metas humanos",
+            "tags":[]
+        }
+   }
 }

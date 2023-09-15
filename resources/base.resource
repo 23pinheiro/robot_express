@@ -9,7 +9,8 @@ Resource    pages/components/Notice.resource
 Resource    pages/components/Alert.resource
 Resource    pages/components/Header.resource
 Resource    pages/TaskCreatePage.resource
-
+Resource    pages/components/TasksPage.resource
+Resource    pages/services.resource
 
 
 *** Keywords *** 
@@ -32,7 +33,6 @@ Short password
 
 Get Fixture
 #Uma nova forma de estruturar sem utilizar a criação de dicionario 
-
   [Arguments]           ${file_name}            ${scenario} 
   ${data}     Load Json from file    
   ...    ../../Resources/fixtures/${file_name}.json
