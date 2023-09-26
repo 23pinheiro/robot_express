@@ -20,5 +20,27 @@
             "name": "Recrutar novos metas humanos",
             "tags":[]
         }
-   }
+   },
+    "tags_limit": {
+        "user": {
+        "name": "Carlos Vilagran",
+        "email": "kiko@televisa.com",
+        "password": "pwd123"
+         },
+        "tasks":{
+        "name": "Estudar python",
+        "tags":["qax","python" ,"programação","pip"]
+        }
+    },
+    "done":{
+        "user": {
+            "name": "Tony Stark",
+            "email": "tony@stark.com",
+            "password": "pwd123"
+        },
+         "tasks":{
+            "name": "Criar uma nova IA",
+            "tags":["jarvis","ultron" ,"ark"]
+        }
+    }
 }
